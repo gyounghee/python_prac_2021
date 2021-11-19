@@ -69,12 +69,12 @@ print(solution(new_id))
 import re
 
 def solution(new_id):
-    st = new_id
-    st = st.lower()
-    st = re.sub('[^a-z0-9\-_.]', '', st)
-    st = re.sub('\.+', '.', st)
-    st = re.sub('^[.]|[.]$', '', st)
-    st = 'a' if len(st) == 0 else st[:15]
-    st = re.sub('^[.]|[.]$', '', st)
-    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))])
+    st = new_id        # 간결한 코드를 위해 
+    st = st.lower()                                                              # 1단계 : new_id의 모든 대문자를 소문자로 치환
+    st = re.sub('[^a-z0-9\-_.]', '', st)                                         # 2단계 : 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거
+    st = re.sub('\.+', '.', st)                                                  # 3단계 : 마침표(.)가 2번이상 연속된 부분을 하나의 마침표(.)로 치환
+    st = re.sub('^[.]|[.]$', '', st)                                             # 4단계 : 문자열의 처음과 끝에 있는 마침표 제
+    st = 'a' if len(st) == 0 else st[:15]                                        # 문자열이 비어있으면 a 대입, 그렇지 않으면 아이디의 길이를 15로 제한 
+    st = re.sub('^[.]|[.]$', '', st)                                             # 4단계 
+    st = st if len(st) > 2 else st + "".join([st[-1] for i in range(3-len(st))]) # 7단계 : 아이디 길이가 2초과면 그대로 놔둠, 그렇지 않으면 길이가 3이 될때까지 문자열에 마지막 문자 추가
     return st

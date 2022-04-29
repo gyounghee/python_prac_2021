@@ -1,6 +1,3 @@
------------------------------------------------- 첫 번 째 문 제 ------------------------------------------
-
-
 # 2018 KAKAO BLIND RECRUITMENT - [1차] 비밀지도
 
 # 1. 지도는 한 변의 길이가 n인 정사각형 배열 형태로, 각 칸은 "공백"(" ") 또는 "벽"("#") 두 종류로 이루어져 있다.
@@ -53,24 +50,24 @@ print(solution(n, arr1, arr2))
 
 
 # 다른 사람 풀이 ①
-import re                                                                 # 정규식 사용
+import re             # 정규식 사용
 
 def solution(n, arr1, arr2):
-    answer = ["#"]*n                                                      # 임시로 길이가 n인 리스트를 만듦
-    for i in range(0, n):                     
-        answer[i] = bin(arr1[i]|arr2[i])[2:]                              # arr1과 arr2를 비트연산 후 2진수로 변환 bin 사용시 0b가 앞에 붙기 때문에 슬라이싱 해줌
-        answer[i] = re.sub('1', '#', '0'*(n-len(answer[i]))+answer[i])    # '0'*(n-len(answer[i]))+answer[i]에서 '1'을 '#'로 바꾼다. / '0'*(n-len(answer[i]))+answer[i] : 길이가 5가 되기 위해 앞에 answer[i] 앞에 '0'을 추가해준다.
-        answer[i] = re.sub('0', ' ', answer[i])                           # answer[i] 에서 '0'을 ' '(공백)으로 바꿈
+    answer = ["#"]*n
+    for i in range(0, n):
+        answer[i] = bin(arr1[i]|arr2[i])[2:]
+        answer[i] = re.sub('1', '#', '0'*(n-len(answer[i]))+answer[i])
+        answer[i] = re.sub('0', ' ', answer[i])
     return answer
 
 
 # 다른 사람 풀이 ②
-def solution(n, arr1, arr2):                                                                 
+def solution(n, arr1, arr2):
     answer = []
-    for i,j in zip(arr1,arr2):                                            # 내장함수 zip을 통해 arr1과 arr2를 순환가능한 객체 인자로 받음                              
-        a12 = str(bin(i|j)[2:])                                           # |(비트연산자)로 연산 후 2진수로 변환 → 2진수로 변환할떄 앞에 생기는 0b를 슬라이싱하여 없앤 후 a12에 저장
-        a12=a12.rjust(n,'0')                                              # rjust를 통해 a12를 오른쪽 정렬한 후 총 길이인 n을 맞추기 위해 '0'으로 공백을 매워준 후 a12에 다시 저장
-        a12=a12.replace('1','#')                                          # replace를 통해 '1'을 '#'로 대체
-        a12=a12.replace('0',' ')                                          # repalce를 통해 '0'을 공백으로 대체
-        answer.append(a12)                                                # a12를 list인 answer에 저장
+    for i,j in zip(arr1,arr2):
+        a12 = str(bin(i|j)[2:])
+        a12=a12.rjust(n,'0')
+        a12=a12.replace('1','#')
+        a12=a12.replace('0',' ')
+        answer.append(a12)
     return answer

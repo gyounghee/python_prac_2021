@@ -1,41 +1,3 @@
------------------------------------- 첫 번 째 코 드 ------------------------------------------
-
-# 월간 코드 챌린지 시즌 1 - 내적
-# 길이가 같은 두 1차원 정수 배열 a, b가 매개변수로 주어집니다.
-# a와 b의 내적을 return 하도록 solution 함수를 완성해주세요.
-
-# * 제한사항 *
-# a, b의 길이는 1 이상 1,000 이하입니다.
-# a, b의 모든 수는 -1,000 이상 1,000 이하입니다.
-
-# 내 답안
-def solution(a, b):
-    answer = 0
-    for i in range(len(a)):
-        answer += a[i]*b[i]
-    return answer
-
-# TEST CASE Ⅰ
-a = [1,2,3,4]
-b = [-3,-1,0,2]
-print(solution(a,b))
-
-# TEST CASE Ⅱ
-a = [-1,0,1]
-b = [1,0,-1]
-print(solution(a,b))
-
-
-# 다른 사람 풀이
-def solution(a, b):
-    return sum([x*y for x, y in zip(a,b)])   
-
-
-
-
------------------------------------- 두 번 째 코 드 ------------------------------------------
-
-
 # 수포자 삼인방은 모의고사 수학문제를 전부 찍으려고 한다.
 # 1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...
 # 2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...
@@ -78,8 +40,8 @@ def solution(answers):
          [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]]
     s = [0] * len(p)
 
-    for q, a in enumerate(answers):                             # q = 0 일 때 a는  answers의 첫 번째 값
-        for i, v in enumerate(p):                               # i = 0 일 때 v는 p의 첫 번째 값 즉,[1,2,3,4,5]
-            if a == v[q % len(v)]:                              # a의 값은 answers의 첫 번 째 값 == 첫 번째 값[0 나누기 5의 나머지]를 하여 
-                s[i] += 1                                       #  답이 맞을 경우 i 번째 학생의 카운트가 올라감
+    for q, a in enumerate(answers):                                  # q = 0 일 때 a는  answers의 첫 번째 값
+        for i, v in enumerate(p):                                        # i = 0 일 때 v는 p의 첫 번째 값 즉,[1,2,3,4,5]
+            if a == v[q % len(v)]:                                        # a의 값은 answers의 첫 번 째 값 == 첫 번째 값[0 나누기 5의 나머지]를 하여 
+                s[i] += 1                                                      #  답이 맞을 경우 i 번째 학생의 카운트가 올라감
     return [i + 1 for i, v in enumerate(s) if v == max(s)]      # 최대값인 i 번째 학생들을 리턴 

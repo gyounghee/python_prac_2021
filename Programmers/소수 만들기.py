@@ -1,5 +1,3 @@
---------------------------------------- 첫 번 쨰 문 제 ------------------------------------------
-
 # 소수 만들기
 # 숫자들이 들어있는 배열 nums가 매개변수로 주어질 때, nums에 있는 숫자들 중 서로 다른 3개를 골라 더했을 때 소수가 되는 경우의 개수를 return 하도록 solution 함수를 완성하라.
 
@@ -33,13 +31,13 @@ print(solution(nums))
 def solution(nums):
     from itertools import combinations as cb  
     answer = 0
-    for a in cb(nums, 3):            # nums에 있는 수 중 3개씩 묶은 값들을 순서대로 a에 넣음   
-        cand = sum(a)                # 3개 씩 묶여져 저장되어 있는 a의 3가지 숫자의 합을 구하여 cand에 넣음
-        for j in range(2, cand):     # 2부터 cand-1 까지 순서대로 j에 넣음
-            if cand%j==0:            # 만약 cand를 j로 나눴을 때 나머지가 0이라면  즉, 나눠진다면
-                break                # for문에서 나와서 맨위의 for문을 이어서 실행한다. 
-        else:                        # 만약 cand를 j로 나눴을 때 나눠지지 않는다면 즉, 소수라면
-            answer += 1              # answer값을 1 올린다.
+    for a in cb(nums, 3):             # nums에 있는 수 중 3개씩 묶은 값들을 순서대로 a에 넣음   
+        cand = sum(a)                  # 3개 씩 묶여져 저장되어 있는 a의 3가지 숫자의 합을 구하여 cand에 넣음
+        for j in range(2, cand):       # 2부터 cand-1 까지 순서대로 j에 넣음
+            if cand%j==0:                # 만약 cand를 j로 나눴을 때 나머지가 0이라면  즉, 나눠진다면
+                break                         # for문에서 나와서 맨위의 for문을 이어서 실행한다. 
+        else:                                   # 만약 cand를 j로 나눴을 때 나눠지지 않는다면 즉, 소수라면
+            answer += 1                   # answer값을 1 올린다.
     return answer
 
 # ** 새로 알게 된 내용 **

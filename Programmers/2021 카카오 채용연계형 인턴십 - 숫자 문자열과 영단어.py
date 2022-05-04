@@ -28,6 +28,24 @@ def solution(s):
     answer = int(answer)
     return answer
 
+
+# TEST CASE Ⅰ
+s = "one4seveneight"
+print(solution(s))
+
+# TEST CASE Ⅱ
+s = "23four5six7"
+print(solution(s))
+
+# TEST CASE Ⅲ
+s = "2three45sixseven"
+print(solution(s))
+
+# TEST CASE Ⅳ
+s = "123"
+print(solution(s))
+
+# -------------------------------------------------------------------
 # 두 번째 답안
 def solution(s):
     answer = ''
@@ -45,21 +63,15 @@ def solution(s):
             answer += c 
     return int(answer)
 
-# TEST CASE Ⅰ
-s = "one4seveneight"
-print(solution(s))
 
-# TEST CASE Ⅱ
-s = "23four5six7"
-print(solution(s))
+# 세 번째 답안
+def solution(s):
+    number_dict = {'zero':0, 'one':1, 'two':2, 'three':3, 'four':4,
+                   'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9}
+    for key,value in number_dict.items() :
+        s = s.replace(key, str(value))
+    return int(s)
 
-# TEST CASE Ⅲ
-s = "2three45sixseven"
-print(solution(s))
-
-# TEST CASE Ⅳ
-s = "123"
-print(solution(s))
 
 
 

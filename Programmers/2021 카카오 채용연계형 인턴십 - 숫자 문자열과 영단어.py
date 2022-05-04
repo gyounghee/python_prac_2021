@@ -28,6 +28,23 @@ def solution(s):
     answer = int(answer)
     return answer
 
+# 두 번째 답안
+def solution(s):
+    answer = ''
+    number_dict = { 'zero':0, 'one':1, 'two':2, 'three':3, 'four':4,
+                    'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9 }
+    tmp = ''
+    for c in s:
+        if c.isalpha() :
+            tmp += c
+            try :
+                answer += str(number_dict[tmp])
+                tmp = ''
+            except KeyError : pass
+        else :
+            answer += c 
+    return int(answer)
+
 # TEST CASE Ⅰ
 s = "one4seveneight"
 print(solution(s))
@@ -47,10 +64,10 @@ print(solution(s))
 
 
 ## 다른 사람 풀이
-#def solution(s):
-#    words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-#
-#    for i in range(len(words)):
-#        s = s.replace(words[i], str(i))
-#
-#    return int(s)
+def solution(s):
+    words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+    for i in range(len(words)):
+        s = s.replace(words[i], str(i))
+
+    return int(s)
